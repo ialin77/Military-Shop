@@ -3,7 +3,20 @@
 {% block title %}My account{% endblock %}
 
 {% block content %}
-<h1 class="text-2xl">My account</h1>
+    <h1 class=" py-2 text-3xl bg-teal-800 text-center text-white rounded-xl hover:bg-grey-900">My account</h1>
+    <br>
 
-<a href="{% url 'logout' %}" class="mt-6 inline-block py-4 px-8 bg-red-400 text-white">Log out</a>
+    <h1 class="text-xl">User: {{user.username}}</h1>
+
+    <h1 class="text-xl">Email: {{user.email}}</h1>
+
+    <br>
+    <br>
+
+    <a href="{% url 'my_orders'  %}"><h2 class="mt-6 inline-block py-4 px-8 bg-teal-800 text-white">My orders</h2></a>
+
+
+
+    <a href="{% url 'logout' %}" class="mt-6 inline-block py-4 px-8 bg-red-400 text-white">Log out</a>
+
 {% endblock %}

@@ -32,12 +32,15 @@ def my_store(request):
         'order_items': order_items
     })
 
+def my_orders(request):
+    order_items = OrderItem.objects.filter(product__user=request.user)
+    return render(request, 'userprofile/my_orders.html', {'order_items': order_items})
 
 @login_required
-def my_store_order_detail(request, pk):
+def my_order_detail(request, pk):
     order = get_object_or_404(Order, pk=pk)
 
-    return render(request, 'userprofile/my_store_order_detail.html', {
+    return render(request, 'userprofile/my_order_detail.html', {
         'order': order
     })
 
@@ -122,5 +125,6 @@ def signup(request):
         form = UserCreationForm()
 
     return render(request, 'userprofile/signup.html', {
-        'form': form
+        'form': form,
     })
+

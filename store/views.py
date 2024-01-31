@@ -89,7 +89,7 @@ def checkout(request):
                     'quantity': item['quantity']
                 })
 
-            stripe.api_key = settings.STRIPE_SECRET_KEY
+            stripe.api_key = settings.STRIPE_PUBLIC_KEY
             session = stripe.checkout.Session.create(
                 payment_method_types=['card'],
                 line_items=items,
@@ -120,7 +120,7 @@ def checkout(request):
 
             cart.clear()
 
-            return JsonResponse({'session': session, 'order': payment_intent, 'item': item})
+            return JsonResponse({'session': session, 'order': payment_intent, 'form': form, 'item': item})
     else:
         form = OrderForm()
 
@@ -130,11 +130,10 @@ def checkout(request):
         'pub_key': settings.STRIPE_PUB_KEY,
     })
 
-
 def search(request):
     query = request.GET.get('query', '')
     products = Product.objects.filter(status=Product.ACTIVE).filter(
-        Q(title__icontains=query) | Q(description__icontains=query))
+        Q(title__icontains=query) | Q(description__icontains=query) )
 
     return render(request, 'store/search.html', {
         'query': query,

@@ -3,13 +3,15 @@
 {% block title %}Checkout{% endblock %}
 
 {% block content %}
-    <h1 class="mb-6 text-2xl">Checkout</h1>
+    <h1 class=" py-2 text-3xl bg-teal-800 text-center text-white rounded-xl hover:bg-grey-900">Checkout</h1>
 
-    <h2 class="text-xl text-gray-500">Total cost: ${{ cart.get_total_cost }}</h2>
-
+    <h2 class=" py-2 text-xl bg-teal-800 text-center text-white rounded-xl hover:bg-grey-900">Total cost: ${{ cart.get_total_cost }}</h2>
+    <br>
     {{ form.as_p }}
 
     <div id="errors" class="hidden my-3 px-4 py-4 bg-red-200 rounded-xl"></div>
+
+    <br>
 
     <button class="inline-block px-8 py-4 bg-teal-500 text-white rounded-xl" onclick="buy(event)">Checkout</button>
 {% endblock %}

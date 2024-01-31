@@ -3,13 +3,19 @@
 {% block title %}Sign up{% endblock %}
 
 {% block content %}
-<h1 class="text-2xl">Sign up</h1>
+<h1 class=" py-2 text-3xl bg-teal-800 text-center text-white rounded-xl hover:bg-grey-900">Sign up</h1>
+
+<br>
 
 <form method="post" action=".">
     {% csrf_token %}
 
     {{ form.as_p }}
 
-    <button class="py-4 px-8 bg-teal-800 text-white">Sign up</button>
+    <br>
+    <hr>
+    <br>
+
+    <button class="py-4 px-6 text-xl bg-teal-800 text-white">Sign up</button>
 </form>
 {% endblock %}
